@@ -1,0 +1,8 @@
+<div id="map">
+  <div class="loading-overlay" *ngIf="isLoading">
+    <div class="spinner"></div>
+  </div>
+  <button class="locate-btn" (click)="goToCurrentLocation()">
+    📍 ตำแหน่งของฉัน
+  </button>
+</div>
