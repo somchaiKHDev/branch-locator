@@ -87,10 +87,15 @@ export class MapComponent {
         this.map.setView([lat, lng], 14);
 
         // เพิ่ม marker
-        L.marker([lat, lng], { icon: this.currentIcon })
+        const marker = L.marker([lat, lng], { icon: this.currentIcon })
           .addTo(this.map)
           .bindPopup('ตำแหน่งของคุณ')
           .openPopup();
+
+        // ลบ marker เมื่อ popup ถูกปิด
+        marker.on('popupclose', () => {
+          this.map.removeLayer(marker);
+        });
 
         this.isLoading = false;
       },
